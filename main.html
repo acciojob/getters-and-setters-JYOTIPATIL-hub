@@ -1,16 +1,72 @@
 <!DOCTYPE html>
-
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person, Student, Teacher</title>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <script>
+        // Person class definition
+        class Person {
+            constructor(name, age) {
+                this._name = name;  // Private-like property for name
+                this._age = age;    // Private-like property for age
+            }
 
+            // Getter for name
+            get name() {
+                return this._name;
+            }
+
+            // Setter for age
+            set age(newAge) {
+                this._age = newAge;
+            }
+
+            // Optional getter for age to verify age changes
+            get age() {
+                return this._age;
+            }
+        }
+
+        // Student class extending Person
+        class Student extends Person {
+            constructor(name, age) {
+                super(name, age);  // Call the parent constructor
+            }
+
+            // Method to log that the student is studying
+            study() {
+                console.log(`${this._name} is studying`);
+            }
+        }
+
+        // Teacher class extending Person
+        class Teacher extends Person {
+            constructor(name, age) {
+                super(name, age);  // Call the parent constructor
+            }
+
+            // Method to log that the teacher is teaching
+            teach() {
+                console.log(`${this._name} is teaching`);
+            }
+        }
+
+        // Example usage
+        const person = new Person("John", 25);
+        console.log(person.name); // Output: John
+
+        person.age = 30;
+        console.log(person.age); // Output: 30
+
+        const student = new Student("Alice", 22);
+        student.study(); // Output: Alice is studying
+
+        const teacher = new Teacher("Bob", 40);
+        teacher.teach(); // Output: Bob is teaching
+    </script>
 </body>
-
 </html>
